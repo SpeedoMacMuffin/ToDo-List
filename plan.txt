@@ -2,6 +2,6 @@
 - html-struktur
 - css-styling
 - add-feature
-- delete-feature
+- delete-feature(prompt "Are you sure you want to delete this task?")
 - done-feature
 - edit-feature(not when done)
