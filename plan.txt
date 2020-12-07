@@ -1,0 +1,7 @@
+- wireframe
+- html-struktur
+- css-styling
+- add-feature
+- delete-feature
+- done-feature
+- edit-feature(not when done)
