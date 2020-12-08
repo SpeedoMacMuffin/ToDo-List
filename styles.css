@@ -6,8 +6,17 @@
 	--colorRed:    #e66161;
 }
 
+
+html {
+	font-family:  unset;  /* will follow soon*/
+}
+
+
+
+
 body {
   text-align: center;
+  margin: 0;
 }
 
 .main { 
