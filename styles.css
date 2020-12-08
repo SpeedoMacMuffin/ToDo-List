@@ -1,3 +1,21 @@
 body {
   text-align: center;
 }
+
+.main { 
+    max-width: 50em;
+    background-color: whitesmoke;
+    margin: 0 auto; 
+}
+
+
+.mockup { 
+	padding-top: 20rem;
+    width: 90vw;
+    margin: 0 auto; 
+    max-width: 400px;
+}
+
+.mockup img { 
+    width: 100%; 
+}
