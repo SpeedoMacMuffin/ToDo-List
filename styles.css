@@ -1,16 +1,52 @@
+
+
+:root {
+	--colorGreen:  #93e24e;
+	--colorWhite:  white;
+	--colorRed:    #e66161;
+}
+
 body {
   text-align: center;
 }
 
 .main { 
-    max-width: 50em;
-    background-color: whitesmoke;
-    margin: 0 auto; 
+    max-width: 18rem;
+    background-color: var(--colorRed);
+    margin: 0 auto;  
+    text-align: left;
+    padding: 1em 3em;
+    box-sizing: border-box;
+}
+
+.main h1 { 
+    text-transform: capitalize;
+    color:  var(--colorWhite); 
+    font-size: 1.8em;
+}
+
+.main > h1 > span {
+	display: block;	
+}
+
+.main > h1 > span:nth-child(2) {
+	color: var(--colorGreen);	 
+    text-transform: lowercase;
+    font-size: 2em;
+    margin: -24px 0px -11px 0px;
 }
 
 
+#instructions {
+ 	color:   var(--colorWhite); 
+    font-size: .4rem;  
+    padding: 0;
+    list-style-position: inside; 
+ }
+
+
 .mockup { 
-	padding-top: 20rem;
+	padding-top: 6rem;
     width: 90vw;
     margin: 0 auto; 
     max-width: 400px;
