@@ -20,10 +20,19 @@ const createElement = (name) => {
   //add text span to element
   element.appendChild(textSpan);
 
+  //create edit button node
+  const editSpan = document.createElement("SPAN");
+  editSpan.className = "edit"; //TODO: add classes
+  editSpan.appendChild(document.createTextNode("edit")); //TODO: replace with icon
+  //TODO: generate edit button event listener
+  //add edit button to element
+  element.appendChild(editSpan);
+
   //create delete button node
   const deleteSpan = document.createElement("SPAN");
   deleteSpan.className = "delete";
   deleteSpan.appendChild(document.createTextNode("delete")); //TODO: replace with icon
+  //TODO: generate delete button event listener
   //add delete button to element
   element.appendChild(deleteSpan);
 
