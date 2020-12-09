@@ -160,6 +160,17 @@ body {
 }
 
 
+
+/* contenteditable   */
+[contenteditable="true"] { padding: 10px; outline: 2px dashed #CCC; }
+[contenteditable="true"]:hover { outline: 2px dashed #0090D2; }
+
+
+  
+
+
+
+/* responsive Styling for Mobile devices*/
 @media only screen and (max-width: 768px) {    
 		.main {
 		    max-width: 100vw; 
