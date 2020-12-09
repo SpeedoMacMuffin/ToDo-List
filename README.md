@@ -15,7 +15,22 @@
 
 ---
 
-Wireframe: ![Wireframe](blob:null/e59887d8-93a8-423f-b139-98318d02c9ac)
+![Wireframe](blob:null/e59887d8-93a8-423f-b139-98318d02c9ac)
 
-Mockup:
-![Mockup](https://raw.githubusercontent.com/klarmann1/ToDo-List/dev/img/todo-mockup.png)
+Mockup: ![Mockup](https://raw.githubusercontent.com/klarmann1/ToDo-List/dev/img/todo-mockup.png)
+
+---
+
+## Functionalities(ready at deployment):
+
+- input of task
+- adding a new task
+- marking tasks as done/checked
+- deleting tasks
+
+## Bonus-Functionalities(in development):
+
+- editing existing task
+- dark-mode toggle
+
+---
