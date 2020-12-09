@@ -66,7 +66,7 @@ body {
 
 
 .main > form {
-	max-width: 400px;
+	/* max-width: 400px; */
 }
 
 .main p {
@@ -84,9 +84,10 @@ body {
 	background-color: var(--colorGreen);
 	height: 3.75em;
 	border: unset;
-	border-radius: 6px; 
+	border-radius: 6px;
 	padding: 0 2em;
 	color: #633232;
+	box-sizing: border-box;
 }
 
 .shadow,
@@ -113,7 +114,7 @@ body {
 	transition: 0.2s;
 }
 
-#task-list > li > span.text {width: 76%;display: inline-block;}
+#task-list > li > span.text {width: calc(99% - 4em);display: inline-block;}
 
 #task-list > li > span.edit {
 	display: inline-block;
@@ -150,7 +151,7 @@ body {
 	position: absolute;
 	left: unset;
 	top: .6em;
-	right: -3em;
+	right: 1.5em;
 	background-color: var(--colorWhite);
 	border: 1px solid black;
 	border-radius: 3px;
