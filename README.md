@@ -4,6 +4,16 @@
 
 ---
 
+## Purpose:
+
+#### This Website helps you to keep track of all the things in your life you don't want to do.
+
+#### So next time somemone wants you to deactivate your ad-blocker, wants to talk about our lord and saviour Jeebus Crisp or wants you to take part in a survey, you can state with full confidence
+
+# _I'm sorry, but that's on my notToDo-list_
+
+---
+
 ### _Collaborators on this project:_
 
 | Name            | Github                                        |
