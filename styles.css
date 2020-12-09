@@ -28,13 +28,13 @@ body {
   margin: 0;
 }
 
-.main { 
+.main {
     max-width: 50rem;
     background-color: var(--colorRed);
-    margin: 0 auto;  
     text-align: left;
-    padding: 1em 3em;
     box-sizing: border-box;
+    margin: 2em auto;
+    padding: 2em 9em;
 }
 
 .main h1 { 
@@ -84,12 +84,60 @@ body {
 	background-color: var(--colorGreen);
 	height: 3.75em;
 	border: unset;
-	border-radius: 6px;
-	color: white;
-	box-shadow:   0 2.8px 2.2px rgba(0, 0, 0, 0.034),  0 6.7px 5.3px rgba(0, 0, 0, 0.048),  0 12.5px 10px rgba(0, 0, 0, 0.06),  0 22.3px 17.9px rgba(0, 0, 0, 0.072),  0 41.8px 33.4px rgba(0, 0, 0, 0.086),  0 100px 80px rgba(0, 0, 0, 0.12);
+	border-radius: 6px; 
 	padding: 0 2em;
 	color: #633232;
 }
+
+.shadow,
+#task-list > li {
+	box-shadow:   0 2.8px 2.2px rgba(0, 0, 0, 0.034),  0 6.7px 5.3px rgba(0, 0, 0, 0.048),  0 12.5px 10px rgba(0, 0, 0, 0.06),  0 22.3px 17.9px rgba(0, 0, 0, 0.072),  0 41.8px 33.4px rgba(0, 0, 0, 0.086),  0 100px 80px rgba(0, 0, 0, 0.12);
+}
+
+#task-list  { 
+    padding: 0;
+}
+
+
+#task-list > li {
+	margin: 1em 0;
+	background-color: var(--colorWhite);
+	border: 1px solid black;
+	border-radius: 3px;
+	box-sizing: border-box;
+	cursor: pointer;
+	position: relative;
+	padding: 12px 8px 12px 40px;
+	list-style-type: none;
+	background: #eee;
+	font-size: 18px;
+	transition: 0.2s;
+}
+
+#task-list > li > span.text {
+width: 70%;
+display: inline-block;
+}
+
+#task-list > li > span.edit {
+	width: 10%;display: 
+	inline-block;
+	text-align: center;
+}
+
+#task-list > li > span.delete {
+	width: 10%;
+	display: inline-block;
+	text-align: center;
+}
+
+
+#task-list > li > span img {
+    width: 16px;
+    height: auto;
+}
+
+
 
 .main button {
 	position: absolute;
