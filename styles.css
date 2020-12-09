@@ -107,28 +107,34 @@ body {
 	box-sizing: border-box;
 	cursor: pointer;
 	position: relative;
-	padding: 12px 8px 12px 40px;
+	padding: 12px 0px 12px 40px;
 	list-style-type: none;
 	background: #eee;
 	font-size: 18px;
 	transition: 0.2s;
 }
 
-#task-list > li > span.text {
-width: 70%;
-display: inline-block;
-}
+#task-list > li > span.text {width: 76%;display: inline-block;}
 
 #task-list > li > span.edit {
-	width: 10%;display: 
-	inline-block;
+	display: inline-block;
 	text-align: center;
+	background-image: url(./img/pen-solid.svg);
+	background-size: cover;
+	width: 1em;
+	height: 1em;
 }
 
 #task-list > li > span.delete {
-	width: 10%;
 	display: inline-block;
 	text-align: center;
+	background-image: url(./img/times-solid.svg);
+	background-size: cover;
+	width: 1em;
+	height: 1em;
+	margin: 0 0 0 1em;
+	background-repeat: no-repeat;
+	background-size: 80%;
 }
 
 
