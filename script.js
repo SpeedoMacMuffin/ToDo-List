@@ -13,6 +13,10 @@ const createElement = (name) => {
   const textSpan = document.createElement("SPAN");
   textSpan.className = ""; //TODO: add classes
   textSpan.appendChild(document.createTextNode(name));
+  //add done event listener
+  textSpan.addEventListener("click", () => {
+    element.classList.toggle("checked");
+  });
 
   //add text span to element
   element.appendChild(textSpan);
