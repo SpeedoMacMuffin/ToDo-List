@@ -54,7 +54,7 @@ const createElement = (name) => {
   makeDropable(element);
 
   // add the li node to the todo list
-  toDoList.appendChild(element);
+  toDoList.prepend(element);
 };
 
 const makeDragable = (element) => {
