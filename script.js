@@ -50,10 +50,20 @@ const createElement = (name) => {
 
   //add drag and drop functionality
   element.id = "li-" + idCounter++;
+  makeDragable(element);
+  makeDropable(element);
+
+  // add the li node to the todo list
+  toDoList.appendChild(element);
+};
+
+const makeDragable = (element) => {
   element.draggable = "true";
   element.addEventListener("dragstart", (ev) => {
     ev.dataTransfer.setData("text", element.id);
   });
+};
+const makeDropable = (element) => {
   element.addEventListener("dragover", (ev) => {
     ev.preventDefault();
     ev.dataTransfer.dropEffect = "move";
@@ -64,11 +74,15 @@ const createElement = (name) => {
       element
     );
   });
-
-  // add the li node to the todo list
-  toDoList.appendChild(element);
+};
+const createDropDubElement = () => {
+  const element = document.createElement("div");
+  element.style.height = "3em";
+  makeDropable(element);
+  toDoList.prepend(element);
 };
 
+createDropDubElement();
 createElement("test1");
 createElement("test2");
 createElement("test3");
