@@ -43,7 +43,6 @@ const createElement = (name) => {
   //create edit button node
   const editSpan = document.createElement("SPAN");
   editSpan.className = "edit"; //TODO: add classes
-  editSpan.appendChild(document.createTextNode("edit")); //TODO: replace with icon
   // add event listener to the button
   editSpan.addEventListener("click", () => {
     // make the content editable for the textSpan (previousSibling)!
@@ -56,7 +55,6 @@ const createElement = (name) => {
   //create delete button node
   const deleteSpan = document.createElement("SPAN");
   deleteSpan.className = "delete";
-  deleteSpan.appendChild(document.createTextNode("delete")); //TODO: replace with icon
   //TODO: generate delete button event listener
   //add delete button to element
   element.appendChild(deleteSpan);
