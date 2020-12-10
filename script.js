@@ -57,12 +57,19 @@ const createElement = (name) => {
   toDoList.prepend(element);
 };
 
+/** make an HTML Element draggable
+ * @param {HTMLElement} element - element to be draggable
+ */
 const makeDragable = (element) => {
   element.draggable = "true";
   element.addEventListener("dragstart", (ev) => {
     ev.dataTransfer.setData("text", element.id);
   });
 };
+
+/** make an HTML Element a valid dropzone
+ * @param {HTMLElement} element - element to be a dropzone
+ */
 const makeDropable = (element) => {
   element.addEventListener("dragover", (ev) => {
     ev.preventDefault();
