@@ -5,13 +5,6 @@ let idCounter = 0;
 
 //needed to prevent unwanted browser behavior when dragging
 window.addEventListener(
-  "dragover",
-  (e) => {
-    e.preventDefault();
-  },
-  false
-);
-window.addEventListener(
   "drop",
   (e) => {
     e.preventDefault();
@@ -60,14 +53,10 @@ const createElement = (name) => {
   element.draggable = "true";
   element.addEventListener("dragstart", (ev) => {
     ev.dataTransfer.setData("text", element.id);
-    ev.dataTransfer.dropEffect = "move";
   });
   element.addEventListener("dragover", (ev) => {
     ev.preventDefault();
-    element.classList.add("drag");
-  });
-  element.addEventListener("dragleave", () => {
-    element.classList.remove("drag");
+    ev.dataTransfer.dropEffect = "move";
   });
   element.addEventListener("drop", (ev) => {
     toDoList.insertBefore(
