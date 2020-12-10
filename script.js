@@ -59,12 +59,10 @@ const createElement = (name) => {
   element.id = "li-" + idCounter++;
   element.draggable = "true";
   element.addEventListener("dragstart", (ev) => {
-    console.log(element.id);
     ev.dataTransfer.setData("text", element.id);
     ev.dataTransfer.dropEffect = "move";
   });
   element.addEventListener("dragover", (ev) => {
-    console.log(element.id);
     ev.preventDefault();
     element.classList.add("drag");
   });
@@ -72,7 +70,6 @@ const createElement = (name) => {
     element.classList.remove("drag");
   });
   element.addEventListener("drop", (ev) => {
-    console.log("droped");
     toDoList.insertBefore(
       document.getElementById(ev.dataTransfer.getData("text")),
       element
