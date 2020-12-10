@@ -1,9 +1,9 @@
 const toDoList = document.getElementById("task-list");
 
-//id counter to create unique ids of li elements
+//id counter to create unique ids of li elements (for drag and drop)
 let idCounter = 0;
 
-//needed to prevent unwanted browser behavior when dragging
+//needed to prevent unwanted browser behavior when dragging (opening new window)
 window.addEventListener(
   "drop",
   (e) => {
@@ -71,10 +71,13 @@ const makeDragable = (element) => {
  * @param {HTMLElement} element - element to be a dropzone
  */
 const makeDropable = (element) => {
+  //change the cursor on the dropzone and mark it as viable
   element.addEventListener("dragover", (ev) => {
     ev.preventDefault();
     ev.dataTransfer.dropEffect = "move";
   });
+
+  //add dragged element before this element
   element.addEventListener("drop", (ev) => {
     toDoList.insertBefore(
       document.getElementById(ev.dataTransfer.getData("text")),
@@ -82,14 +85,20 @@ const makeDropable = (element) => {
     );
   });
 };
+
+/** create an empty dropzone element and add it to the ToDoList
+ */
 const createDropDubElement = () => {
   const element = document.createElement("div");
-  element.style.height = "3em";
+  element.style.height = "3em"; //TODO: add a class instead and add it to css
   makeDropable(element);
   toDoList.prepend(element);
 };
 
+//add a dropzone to the bottom of the list
 createDropDubElement();
+
+//create initial Elements
 createElement("test1");
 createElement("test2");
 createElement("test3");
