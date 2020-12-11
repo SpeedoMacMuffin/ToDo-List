@@ -115,8 +115,9 @@ body {
 }
 
 #task-list > li > span.text {
-  width: calc(99% - 3.2em);
-  display: inline-block;
+	width: calc(99% - 5em);
+	display: inline-block;
+	margin-right: 2em; 
 }
 
 #task-list > li > span.edit {
