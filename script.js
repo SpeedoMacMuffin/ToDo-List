@@ -137,8 +137,8 @@ const createDropDubElement = () => {
 createDropDubElement();
 
 //create initial Elements
-createElement("test1");
-createElement("test2");
-createElement("test3");
-createElement("test4");
-createElement("test5");
+createElement("Talk about our lord and savior Jesus Christ");
+createElement("Deactivate addblocker");
+createElement("Accept all cookies");
+createElement("Take part in a survey");
+createElement("Skip morning coffee");
