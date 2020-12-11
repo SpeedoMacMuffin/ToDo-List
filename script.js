@@ -25,10 +25,16 @@ const createElement = (name) => {
   const textSpan = document.createElement("SPAN");
   textSpan.className = "text";
   textSpan.appendChild(document.createTextNode(name));
-  //add done event listener
-  textSpan.addEventListener("click", () => {
-    element.classList.toggle("checked");
+  //add done event listener to li element
+  element.addEventListener("click", (ev) => {
+    if (
+      ev.target === element ||
+      (ev.target === textSpan && ev.target.isContentEditable === false)
+    ) {
+      element.classList.toggle("checked");
+    }
   });
+
   // addEvent-Listener to supress the return-Key from beeing pressed
   textSpan.addEventListener("keydown", (keyInfo) => {
     // stop editing if the Enter-Key is pressed
