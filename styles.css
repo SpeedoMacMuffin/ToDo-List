@@ -1,27 +1,21 @@
-
-
 :root {
-	--colorGreen:  	 #93e24e;
-	--colorWhite: 	 white;
-	--colorRed:   	 #e66161;
-	--colorPaleRed:  #ed8a8a;
-	--font_Roboto: 	'Roboto Slab', serif;
-	--font_Rubik:  	'Rubik', sans-serif; 
+  --colorGreen: #93e24e;
+  --colorWhite: white;
+  --colorRed: #e66161;
+  --colorPaleRed: #ed8a8a;
+  --font_Roboto: "Roboto Slab", serif;
+  --font_Rubik: "Rubik", sans-serif;
 }
-
 
 /* fontsinfo: https://fonts.google.com/specimen/Roboto+Slab?query=roboto+slab&sidebar.open=true&selection.family=Roboto+Slab:wght@400;700|Rubik:wght@700   
 "Rubik" is for Bold 700 for the Titel 
 "Roboto slab" is for Bold 700 and Regular 400 
-*/ 
-
+*/
 
 html {
-	font-family: var(--font_Roboto);
-	font-size: 	16px;
+  font-family: var(--font_Roboto);
+  font-size: 16px;
 }
-
- 
 
 body {
   text-align: center;
@@ -29,195 +23,185 @@ body {
 }
 
 .main {
-    max-width: 50rem;
-    background-color: var(--colorRed);
-    text-align: left;
-    box-sizing: border-box;
-    margin: 2em auto;
-    padding: 2em 9em;
+  max-width: 50rem;
+  background-color: var(--colorRed);
+  text-align: left;
+  box-sizing: border-box;
+  margin: 2em auto;
+  padding: 2em 9em;
 }
 
-.main h1 { 
-    text-transform: capitalize;
-    color:  var(--colorWhite); 
-    font-size: 1.4em;
-   	font-family: var(--font_Rubik);
+.main h1 {
+  text-transform: capitalize;
+  color: var(--colorWhite);
+  font-size: 1.4em;
+  font-family: var(--font_Rubik);
 }
 
 .main > h1 > span {
-	display: block;	
+  display: block;
 }
 
 .main > h1 > span:nth-child(2) {
-	color: var(--colorGreen);	 
-    text-transform: lowercase;
-    font-size: 2em;
-    margin: -13px 0px -11px -4px;
+  color: var(--colorGreen);
+  text-transform: lowercase;
+  font-size: 2em;
+  margin: -13px 0px -11px -4px;
 }
 
-
 #instructions {
- 	color:   var(--colorWhite); 
-    font-size: .9rem;  
-    padding: 0;
-    list-style-position: inside; 
-    max-width: 380px;
- }
-
+  color: var(--colorWhite);
+  font-size: 0.9rem;
+  padding: 0;
+  list-style-position: inside;
+  max-width: 380px;
+}
 
 .main > form {
-	/* max-width: 400px; */
+  /* max-width: 400px; */
 }
 
 .main p {
-	font-size: .6em;
-	color:  var(--colorPaleRed);
-	margin: 2.5em 0 .25em 0;
+  font-size: 0.6em;
+  color: var(--colorPaleRed);
+  margin: 2.5em 0 0.25em 0;
 }
 
 .inputArea {
-	position: relative;
+  position: relative;
 }
 
 #task {
-	width: 100%;
-	background-color: var(--colorGreen);
-	height: 3.75em;
-	border: unset;
-	border-radius: 6px;
-	padding: 0 2em;
-	color: #633232;
-	box-sizing: border-box;
-	border-bottom: 2px solid black;
+  width: 100%;
+  background-color: var(--colorGreen);
+  height: 3.75em;
+  border: unset;
+  border-radius: 6px;
+  padding: 0 2em;
+  color: #633232;
+  box-sizing: border-box;
+  border-bottom: 2px solid black;
+}
+#task:focus {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-decoration-color: #e66161;
 }
 
 .shadow,
 #task-list > li {
-	box-shadow:   0 2.8px 2.2px rgba(0, 0, 0, 0.034),  0 6.7px 5.3px rgba(0, 0, 0, 0.048),  0 12.5px 10px rgba(0, 0, 0, 0.06),  0 22.3px 17.9px rgba(0, 0, 0, 0.072),  0 41.8px 33.4px rgba(0, 0, 0, 0.086),  0 100px 80px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+    0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06),
+    0 22.3px 17.9px rgba(0, 0, 0, 0.072), 0 41.8px 33.4px rgba(0, 0, 0, 0.086),
+    0 100px 80px rgba(0, 0, 0, 0.12);
 }
 
-#task-list  { 
-    padding: 0;
+#task-list {
+  padding: 0;
 }
-
 
 #task-list > li {
-	margin: 1em 0;
-	background-color: var(--colorWhite);
-	border: 1px solid black;
-	border-radius: 6px;
-	box-sizing: border-box;
-	position: relative;
-	padding: 12px 0px 12px 40px;
-	list-style-type: none;
-	background: #eee;
-	font-size: 18px;
-	transition: 0.2s;
+  margin: 1em 0;
+  background-color: var(--colorWhite);
+  border: 1px solid black;
+  border-radius: 6px;
+  box-sizing: border-box;
+  position: relative;
+  padding: 12px 0px 12px 40px;
+  list-style-type: none;
+  background: #eee;
+  font-size: 18px;
+  transition: 0.2s;
 }
 
 #task-list > li > span.text {
-	width: calc(99% - 3.2em);
-	display: inline-block;
+  width: calc(99% - 3.2em);
+  display: inline-block;
 }
 
 #task-list > li > span.edit {
-	display: inline-block;
-	text-align: center;
-	background-image: url(./img/pen-solid.svg);
-	background-size: cover;
-	width: 1em;
-	height: 1em;
-	cursor: pointer;
+  display: inline-block;
+  text-align: center;
+  background-image: url(./img/pen-solid.svg);
+  background-size: cover;
+  width: 1em;
+  height: 1em;
+  cursor: pointer;
 }
 
 #task-list > li > span.edit.saveActive {
-                background-image: none;
-            } 
+  background-image: none;
+}
 
 #task-list > li > span.edit.saveActive::before {
-                content: "- save -";
-                background-color: var(--colorGreen);
-                position: absolute;
-                background-image: none;
-                width: 4em;
-                right: 0em;
-                top: 0;
-                height: 100%;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-            } 
+  content: "- save -";
+  background-color: var(--colorGreen);
+  position: absolute;
+  background-image: none;
+  width: 4em;
+  right: 0em;
+  top: 0;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 #task-list > li > span.delete {
-	display: inline-block;
-	text-align: center;
-	background-image: url(./img/times-solid.svg);
-	background-size: cover;
-	width: 1em;
-	height: 1em;
-	margin: 0 0 0 1em;
-	background-repeat: no-repeat;
-	background-size: 80%; 
-	cursor: pointer;
+  display: inline-block;
+  text-align: center;
+  background-image: url(./img/times-solid.svg);
+  background-size: cover;
+  width: 1em;
+  height: 1em;
+  margin: 0 0 0 1em;
+  background-repeat: no-repeat;
+  background-size: 80%;
+  cursor: pointer;
 }
-
 
 #task-list > li > span img {
-    width: 16px;
-    height: auto;
+  width: 16px;
+  height: auto;
 }
-
-
 
 .main button {
-	position: absolute;
-	left: unset;
-	top: .6em;
-	right: 1.5em;
-	background-color: var(--colorWhite);
-	border: 1px solid black;
-	border-radius: 3px;
-	padding: .6em 1.5em;
-	font-weight: 700;
+  position: absolute;
+  left: unset;
+  top: 0.6em;
+  right: 1.5em;
+  background-color: var(--colorWhite);
+  border: 1px solid black;
+  border-radius: 3px;
+  padding: 0.6em 1.5em;
+  font-weight: 700;
 }
-
-
 
 /* contenteditable   */
-[contenteditable="true"] { padding: 1px; outline: 2px dashed #CCC; }
-[contenteditable="true"]:hover { outline: 2px dashed #0090D2; }
-
-
-  
-
-
-
-/* responsive Styling for Mobile devices*/
-@media only screen and (max-width: 768px) {    
-		.main {
-		    max-width: 100vw; 
-		}
+[contenteditable="true"] {
+  padding: 1px;
+  outline: 2px dashed #ccc;
+}
+[contenteditable="true"]:hover {
+  outline: 2px dashed #0090d2;
 }
 
-
-
-
-
-
-
-
-
+/* responsive Styling for Mobile devices*/
+@media only screen and (max-width: 768px) {
+  .main {
+    max-width: 100vw;
+  }
+}
 
 /* just for the mockup*/
 
-.mockup { 
-	padding-top: 6rem;
-    width: 90vw;
-    margin: 0 auto; 
-    max-width: 100%;
+.mockup {
+  padding-top: 6rem;
+  width: 90vw;
+  margin: 0 auto;
+  max-width: 100%;
 }
 
-.mockup img { 
-    width: 100%; 
+.mockup img {
+  width: 100%;
 }
-
