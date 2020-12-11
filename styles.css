@@ -57,10 +57,6 @@ body {
   max-width: 380px;
 }
 
-.main > form {
-  /* max-width: 400px; */
-}
-
 .main p {
   font-size: 0.6em;
   color: var(--colorPaleRed);
@@ -81,11 +77,6 @@ body {
   color: #633232;
   box-sizing: border-box;
   border-bottom: 2px solid black;
-}
-#task:focus {
-  text-decoration: underline;
-  text-decoration-thickness: 2px;
-  text-decoration-color: #e66161;
 }
 
 .shadow,
@@ -112,12 +103,16 @@ body {
   background: #eee;
   font-size: 18px;
   transition: 0.2s;
+  cursor: pointer;
+}
+#task-list > li:hover {
+  box-shadow: rgba(0, 0, 0, 0.5) 0px 14px 28px, rgba(0, 0, 0, 0.5) 0px 5px 5px;
+  transition: all 0.25s;
 }
 
 #task-list > li > span.text {
-	width: calc(99% - 5em);
-	display: inline-block;
-	margin-right: 2em; 
+  width: calc(99% - 3.2em);
+  display: inline-block;
 }
 
 #task-list > li > span.edit {
@@ -166,6 +161,16 @@ body {
   height: auto;
 }
 
+#task:focus {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  box-shadow: rgba(0, 0, 0, 0.5) 0px 14px 28px, rgba(0, 0, 0, 0.5) 0px 5px 5px;
+  transition: all 0.25s;
+}
+#task:hover {
+  box-shadow: rgba(0, 0, 0, 0.5) 0px 14px 28px, rgba(0, 0, 0, 0.5) 0px 5px 5px;
+  transition: all 0.25s;
+}
 .main button {
   position: absolute;
   left: unset;
@@ -176,6 +181,18 @@ body {
   border-radius: 3px;
   padding: 0.6em 1.5em;
   font-weight: 700;
+  cursor: pointer;
+}
+.main button:hover {
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 5px 5px;
+  transition: all 0.25s;
+}
+
+#task-list > li.checked {
+  background-color: rgba(0, 0, 0, 0.5) !important;
+}
+#task-list > li.checked > span.edit {
+  display: none;
 }
 
 /* contenteditable   */
