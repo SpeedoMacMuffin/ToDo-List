@@ -115,7 +115,10 @@ body {
 	transition: 0.2s;
 }
 
-#task-list > li > span.text {width: calc(99% - 4em);display: inline-block;}
+#task-list > li > span.text {
+	width: calc(99% - 3.2em);
+	display: inline-block;
+}
 
 #task-list > li > span.edit {
 	display: inline-block;
