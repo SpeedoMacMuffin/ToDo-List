@@ -57,7 +57,11 @@ const createElement = (name) => {
   const deleteSpan = document.createElement("SPAN");
   deleteSpan.className = "delete";
   deleteSpan.appendChild(document.createTextNode("delete")); //TODO: replace with icon
-  //TODO: generate delete button event listener
+  //generate delete button event listener
+  deleteSpan.addEventListener("click", () => {
+    element.remove();
+  });
+  
   //add delete button to element
   element.appendChild(deleteSpan);
 
