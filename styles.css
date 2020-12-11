@@ -88,6 +88,7 @@ body {
 	padding: 0 2em;
 	color: #633232;
 	box-sizing: border-box;
+	border-bottom: 2px solid black;
 }
 
 .shadow,
@@ -104,7 +105,7 @@ body {
 	margin: 1em 0;
 	background-color: var(--colorWhite);
 	border: 1px solid black;
-	border-radius: 3px;
+	border-radius: 6px;
 	box-sizing: border-box;
 	position: relative;
 	padding: 12px 0px 12px 40px;
@@ -114,7 +115,10 @@ body {
 	transition: 0.2s;
 }
 
-#task-list > li > span.text {width: calc(99% - 4em);display: inline-block;}
+#task-list > li > span.text {
+	width: calc(99% - 3.2em);
+	display: inline-block;
+}
 
 #task-list > li > span.edit {
 	display: inline-block;
@@ -122,9 +126,27 @@ body {
 	background-image: url(./img/pen-solid.svg);
 	background-size: cover;
 	width: 1em;
-	height: 1em; 
+	height: 1em;
 	cursor: pointer;
 }
+
+#task-list > li > span.edit.saveActive {
+                background-image: none;
+            } 
+
+#task-list > li > span.edit.saveActive::before {
+                content: "- save -";
+                background-color: var(--colorGreen);
+                position: absolute;
+                background-image: none;
+                width: 4em;
+                right: 0em;
+                top: 0;
+                height: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            } 
 
 #task-list > li > span.delete {
 	display: inline-block;
@@ -162,7 +184,7 @@ body {
 
 
 /* contenteditable   */
-[contenteditable="true"] { padding: 10px; outline: 2px dashed #CCC; }
+[contenteditable="true"] { padding: 1px; outline: 2px dashed #CCC; }
 [contenteditable="true"]:hover { outline: 2px dashed #0090D2; }
 
 

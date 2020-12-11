@@ -44,3 +44,7 @@ Mockup: ![Mockup](https://raw.githubusercontent.com/klarmann1/ToDo-List/dev/img/
 - dark-mode toggle
 
 ---
+
+## Libaries and Images 
+
+- the following two Icons are comming from font-awesome.com: the Close-Icon and the Edit-Icon  
