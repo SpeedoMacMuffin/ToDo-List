@@ -74,7 +74,11 @@ const createElement = (name) => {
   //create delete button node
   const deleteSpan = document.createElement("SPAN");
   deleteSpan.className = "delete";
-  //TODO: generate delete button event listener
+  //generate delete button event listener
+  deleteSpan.addEventListener("click", () => {
+    element.remove();
+  });
+  
   //add delete button to element
   element.appendChild(deleteSpan);
 
