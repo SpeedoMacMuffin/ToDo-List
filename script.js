@@ -35,6 +35,7 @@ const createElement = (name) => {
     if (keyInfo.keyCode == 13) {
       // console.log('the Return-Key on the Keyboard has the keydown-Number: 13!');
       textSpan.contentEditable = "false";
+      editSpan.classList.remove('saveActive');
     }
   });
   //add text span to element
@@ -45,8 +46,20 @@ const createElement = (name) => {
   editSpan.className = "edit"; //TODO: add classes
   // add event listener to the button
   editSpan.addEventListener("click", () => {
-    // make the content editable for the textSpan (previousSibling)!
-    textSpan.contentEditable = "true";
+      // Deactivate the Editable field and hide save Button   
+      if (textSpan.contentEditable == "true") {
+           editSpan.classList.remove('saveActive');
+           textSpan.contentEditable = "false";   
+      } else { 
+          // Show  the Editable field and hide save Button to make the content editable for the textSpan  
+          textSpan.contentEditable = "true";
+          editSpan.classList.add('saveActive'); 
+          textSpan.focus(); 
+          // PLACE CURSOR AT THE END OF THE CURRENT TEXT 
+              // select all the content in the element
+              document.execCommand('selectAll', false, null);
+              // collapse selection to the end
+              document.getSelection().collapseToEnd();       }
   });
 
   //add edit button to element
