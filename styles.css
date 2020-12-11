@@ -181,7 +181,7 @@ body {
 
 
 /* contenteditable   */
-[contenteditable="true"] { padding: 10px; outline: 2px dashed #CCC; }
+[contenteditable="true"] { padding: 1px; outline: 2px dashed #CCC; }
 [contenteditable="true"]:hover { outline: 2px dashed #0090D2; }
 
 
