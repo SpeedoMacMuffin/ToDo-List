@@ -8,7 +8,7 @@
 
 #### This Website helps you to keep track of all the things in your life you don't want to do.
 
-#### So next time somemone wants you to deactivate your ad-blocker, wants to talk about our lord and saviour Jeebus Crisp or wants you to take part in a survey, you can state with full confidence
+#### So next time somemone wants you to deactivate your ad-blocker, wants to talk about our lord and saviour Cthulu or wants you to take part in a survey, you can state with full confidence
 
 # _I'm sorry, but that's on my notToDo-list_
 
@@ -44,3 +44,7 @@ Mockup: ![Mockup](https://raw.githubusercontent.com/klarmann1/ToDo-List/dev/img/
 - dark-mode toggle
 
 ---
+
+## Libaries and Images 
+
+- the following two Icons are comming from font-awesome.com: the Close-Icon and the Edit-Icon  
