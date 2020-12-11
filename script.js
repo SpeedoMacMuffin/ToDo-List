@@ -25,10 +25,16 @@ const createElement = (name) => {
   const textSpan = document.createElement("SPAN");
   textSpan.className = "text";
   textSpan.appendChild(document.createTextNode(name));
-  //add done event listener
-  textSpan.addEventListener("click", () => {
-    element.classList.toggle("checked");
+  //add done event listener to li element
+  element.addEventListener("click", (ev) => {
+    if (
+      ev.target === element ||
+      (ev.target === textSpan && ev.target.isContentEditable === false)
+    ) {
+      element.classList.toggle("checked");
+    }
   });
+
   // addEvent-Listener to supress the return-Key from beeing pressed
   textSpan.addEventListener("keydown", (keyInfo) => {
     // stop editing if the Enter-Key is pressed
@@ -68,7 +74,11 @@ const createElement = (name) => {
   //create delete button node
   const deleteSpan = document.createElement("SPAN");
   deleteSpan.className = "delete";
-  //TODO: generate delete button event listener
+  //generate delete button event listener
+  deleteSpan.addEventListener("click", () => {
+    element.remove();
+  });
+  
   //add delete button to element
   element.appendChild(deleteSpan);
 
@@ -137,8 +147,8 @@ const createDropDubElement = () => {
 createDropDubElement();
 
 //create initial Elements
-createElement("test1");
-createElement("test2");
-createElement("test3");
-createElement("test4");
-createElement("test5");
+createElement("Talk about our lord and savior Jesus Christ");
+createElement("Deactivate addblocker");
+createElement("Accept all cookies");
+createElement("Take part in a survey");
+createElement("Skip morning coffee");
