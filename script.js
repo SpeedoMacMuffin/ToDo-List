@@ -111,7 +111,9 @@ addButton.addEventListener("click", () => {
 const makeDragable = (element) => {
   element.draggable = "true";
   element.addEventListener("dragstart", (ev) => {
-    ev.dataTransfer.setData("text", element.id);
+    ev.dataTransfer.setData("text", element.id); 
+    // visualize dragged Element in its remaining position
+    element.style.opacity = ".75";
   });
 };
 
@@ -126,11 +128,15 @@ const makeDropable = (element) => {
   });
 
   //add dragged element before this element
-  element.addEventListener("drop", (ev) => {
-    toDoList.insertBefore(
-      document.getElementById(ev.dataTransfer.getData("text")),
-      element
-    );
+  element.addEventListener("drop", (ev) => { 
+   let draggedEl = document.getElementById(ev.dataTransfer.getData("text"));
+    toDoList.insertBefore(draggedEl, element
+    ); 
+    // visualize dropped Element in its new position for one second
+    setTimeout(function() {
+      draggedEl.style.opacity = "1";
+   }, 1000);
+ 
   });
 };
 
