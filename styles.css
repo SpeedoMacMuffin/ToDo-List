@@ -132,18 +132,16 @@ body {
 #task-list > li > span.edit:hover {
  transform: rotate(8deg);
 }
-
  
 #task-list > li > span.delete:hover { 
     transform: scale(0.85);
 }
-
-
-
+ 
 #task-list > li > span.edit.saveActive {
   background-image: none;
+  transform: none;
 }
-
+  
 #task-list > li > span.edit.saveActive::before {
   content: "- save -";
   background-color: var(--colorGreen);
