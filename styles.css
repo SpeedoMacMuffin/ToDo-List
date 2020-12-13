@@ -202,7 +202,7 @@ body {
 }
 
 #task-list > li.checked {
-  background-color: rgba(0, 0, 0, 0.5) !important;
+  background-color: rgba(125, 77, 77, 0.5) !important;
   padding: 0 0 0 40px;
   opacity: .7;
 }
