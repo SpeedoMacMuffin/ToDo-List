@@ -1,4 +1,68 @@
-class TodoList {
+"use strict";
+
+let idCounter = 0;
+class ToDoList {
+  constructor() {
+    this._list = [
+      new TodoListElement("title1"),
+      new TodoListElement("title2"),
+      new TodoListElement("title3"),
+      new TodoListElement("title4"),
+    ];
+  }
+
+  addELement(title) {
+    this._list.push(new TodoListElement(title));
+    this.renderElements();
+  }
+  deleteElement(id) {
+    //delete element from List
+    //delete element from DOM
+    this.renderElements();
+  }
+  editElement(id) {
+    //do something
+    this.renderElements();
+  }
+
+  renderElements() {
+    const toDoList = document.getElementById("task-list");
+    //delete all childs
+    toDoList.innerHTML="";
+
+    for(let i=0; i<this._list.length; i++) {
+      toDoList.prepend(this._list[i].render());
+    }
+  }
+}
+
+class TodoListElement {
+  constructor(title) {
+    this._id = "li-" + idCounter++;
+    this._title = title;
+  }
+  render() {
+    const htmlElement = document.createElement("LI");
+
+    //TODO add id
+
+    //create text span node
+    const textSpan = document.createElement("SPAN");
+    textSpan.className = "text";
+    textSpan.appendChild(document.createTextNode(this._title));
+    htmlElement.appendChild(textSpan);
+    htmlElement.id = this._id;
+
+    //TODO rest
+    return htmlElement;
+  }
+}
+
+const todoList = new ToDoList();
+todoList.renderElements();
+todoList.addELement("title10");
+
+/*class TodoList {
   constructor() {
     this._listElements = [];
   }
@@ -21,7 +85,6 @@ class TodoList {
     //delete element with id from dom and list
   }
 }
-
 class ToDoElement {
   constructor(title = "task", deleteHandler) {
     this._id = 5;
@@ -94,7 +157,7 @@ class ToDoElement {
     const deleteSpan = document.createElement("SPAN");
     deleteSpan.className = "delete";
     //generate delete button event listener
-    deleteSpan.addEventListener("click", () => this._deleteHandler(this._id));
+    deleteSpan.addEventListener("click", () => this._deleteHandler(this));
     //add delete button to element
     element.appendChild(deleteSpan);
     this._htmlElement = element;
@@ -107,4 +170,4 @@ const element = new ToDoElement("sometitle", () => {
 });
 
 const toDoList = document.getElementById("task-list");
-toDoList.prepend(element.createListElement());
+toDoList.prepend(element.createListElement());*/
