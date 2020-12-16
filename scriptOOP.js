@@ -10,8 +10,18 @@ class ToDoList {
       new TodoListElement("title4"),
     ];
   }
+ 
 
-  addElement(title) {
+  // find index of Element with given ID  
+  indexOfElement(id) { 
+    for(let i=0; i<this._list.length; i++) { 
+        if (id === this._list[i].getId()) { 
+            return i ;
+        }   
+    }
+  } 
+
+  addELement(title) { 
     this._list.push(new TodoListElement(title));
     this.renderElements();
   }
@@ -36,11 +46,23 @@ class ToDoList {
   }
 }
 
+
+
+
+
 class TodoListElement {
   constructor(title) {
     this._id = "li-" + idCounter++;
     this._title = title;
   }
+
+
+
+    getId() {
+      return  this._id; 
+    }
+
+
   render() {
     const htmlElement = document.createElement("LI");
 
@@ -52,6 +74,17 @@ class TodoListElement {
     textSpan.appendChild(document.createTextNode(this._title));
     htmlElement.appendChild(textSpan);
     htmlElement.id = this._id;
+ 
+
+ 
+    //add done event listener to li element
+    htmlElement.addEventListener("click", (ev) => {
+       if ( ev.target === htmlElement || (ev.target === textSpan && ev.target.isContentEditable === false) ) {
+        htmlElement.classList.toggle("checked"); 
+       }  
+    }); 
+
+ 
 
     //TODO rest
     return htmlElement;
@@ -75,6 +108,11 @@ addBttn.addEventListener("click", (e) => {
     alert("Please enter a task");
   }
 });
+
+
+//  console.log(todoList.indexOfElement('li-1'));
+
+
 
 /*class TodoList {
   constructor() {
