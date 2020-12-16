@@ -62,6 +62,7 @@ const todoList = new ToDoList();
 todoList.renderElements();
 todoList.addElement("title10");
 
+/* Add Button functionality */
 const addBttn = document.getElementById("add");
 
 addBttn.addEventListener("click", (e) => {
