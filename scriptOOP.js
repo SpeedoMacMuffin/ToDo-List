@@ -11,7 +11,7 @@ class ToDoList {
     ];
   }
 
-  addELement(title) {
+  addElement(title) {
     this._list.push(new TodoListElement(title));
     this.renderElements();
   }
@@ -28,9 +28,9 @@ class ToDoList {
   renderElements() {
     const toDoList = document.getElementById("task-list");
     //delete all childs
-    toDoList.innerHTML="";
+    toDoList.innerHTML = "";
 
-    for(let i=0; i<this._list.length; i++) {
+    for (let i = 0; i < this._list.length; i++) {
       toDoList.prepend(this._list[i].render());
     }
   }
@@ -60,7 +60,20 @@ class TodoListElement {
 
 const todoList = new ToDoList();
 todoList.renderElements();
-todoList.addELement("title10");
+todoList.addElement("title10");
+
+const addBttn = document.getElementById("add");
+
+addBttn.addEventListener("click", (e) => {
+  let name = document.querySelector("#task").value;
+  e.preventDefault();
+  if (name) {
+    todoList.addElement(name);
+    document.querySelector("#task").value = "";
+  } else {
+    alert("Please enter a task");
+  }
+});
 
 /*class TodoList {
   constructor() {
