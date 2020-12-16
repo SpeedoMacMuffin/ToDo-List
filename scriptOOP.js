@@ -19,7 +19,7 @@ class ToDoList {
             return i ;
         }   
     }
-  }
+  } 
 
   addELement(title) {
     this._list.push(new TodoListElement(title));
