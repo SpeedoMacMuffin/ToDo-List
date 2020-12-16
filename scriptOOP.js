@@ -11,6 +11,16 @@ class ToDoList {
     ];
   }
 
+
+  // find index of Element with given ID  
+  indexOfElement(id) { 
+    for(let i=0; i<this._list.length; i++) { 
+        if (id === this._list[i].getId()) { 
+            return i ;
+        }   
+    }
+  }
+
   addELement(title) {
     this._list.push(new TodoListElement(title));
     this.renderElements();
@@ -36,11 +46,23 @@ class ToDoList {
   }
 }
 
+
+
+
+
 class TodoListElement {
   constructor(title) {
     this._id = "li-" + idCounter++;
     this._title = title;
   }
+
+
+
+    getId() {
+      return  this._id; 
+    }
+
+
   render() {
     const htmlElement = document.createElement("LI");
 
@@ -53,6 +75,22 @@ class TodoListElement {
     htmlElement.appendChild(textSpan);
     htmlElement.id = this._id;
 
+
+
+
+    // 111111111111111111
+    //add done event listener to li element
+    htmlElement.addEventListener("click", (ev) => {
+       if ( ev.target === htmlElement || (ev.target === textSpan && ev.target.isContentEditable === false) ) {
+        htmlElement.classList.toggle("checked");
+        console.log('should toggle checked Class now');
+       }
+    });
+     // 111111111111111111111 
+
+
+
+
     //TODO rest
     return htmlElement;
   }
@@ -61,6 +99,11 @@ class TodoListElement {
 const todoList = new ToDoList();
 todoList.renderElements();
 todoList.addELement("title10");
+
+
+//  console.log(todoList.indexOfElement('li-1'));
+
+
 
 /*class TodoList {
   constructor() {
