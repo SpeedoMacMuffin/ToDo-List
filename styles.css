@@ -107,7 +107,8 @@ body {
   transition: all 0.25s;
 }
 
-#task-list > li > span.text {
+
+.text {
   width: calc(99% - 5em);
   display: inline-block;
   margin-right: 2em;
@@ -115,7 +116,7 @@ body {
 }
 
 
-#task-list > li > span.edit {
+.edit {
   display: inline-block;
   text-align: center;
   background-image: url(./img/pen-solid.svg);
@@ -126,20 +127,20 @@ body {
 }
 
 
-#task-list > li > span.edit:hover {
+.edit:hover {
  transform: rotate(8deg);
 }
  
-#task-list > li > span.delete:hover { 
+.delete:hover { 
     transform: scale(0.85);
 }
  
-#task-list > li > span.edit.saveActive {
+.edit.saveActive {
   background-image: none;
   transform: none;
 }
   
-#task-list > li > span.edit.saveActive::before {
+.edit.saveActive::before {
   content: "- save -";
   background-color: var(--colorGreen);
   position: absolute;
@@ -153,7 +154,7 @@ body {
   align-items: center;
 }
 
-#task-list > li > span.delete {
+.delete {
   display: inline-block;
   text-align: center;
   background-image: url(./img/times-solid.svg);
@@ -164,6 +165,22 @@ body {
   background-repeat: no-repeat;
   background-size: 80%;
   cursor: pointer;
+}
+
+#task-list > li.checked {
+  background-color: rgba(125, 77, 77, 0.5) !important;
+  padding: 0 0 0 40px;
+  opacity: .7;
+}
+ 
+#task-list > li.checked > .text {
+  text-decoration: line-through;
+  font-style: italic;
+  font-size: .9em;
+}
+
+#task-list > li.checked > .edit {
+  display: none;
 }
 
 #task:focus {
@@ -191,22 +208,6 @@ body {
 .main button:hover {
   box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 5px 5px;
   transition: all 0.25s;
-}
-
-#task-list > li.checked {
-  background-color: rgba(125, 77, 77, 0.5) !important;
-  padding: 0 0 0 40px;
-  opacity: .7;
-}
- 
-#task-list > li.checked > span.text {
-  text-decoration: line-through;
-  font-style: italic;
-  font-size: .9em;
-}
-
-#task-list > li.checked > span.edit {
-  display: none;
 }
 
 /* contenteditable   */
