@@ -1,3 +1,6 @@
+* {
+  box-sizing: border-box;
+}
 :root {
   --colorGreen: #93e24e;
   --colorWhite: white;
@@ -26,7 +29,6 @@ body {
   max-width: 50rem;
   background-color: var(--colorRed);
   text-align: left;
-  box-sizing: border-box;
   margin: 2em auto;
   padding: 2em 9em;
 }
@@ -75,7 +77,6 @@ body {
   border-radius: 6px;
   padding: 0 2em;
   color: #633232;
-  box-sizing: border-box;
   border-bottom: 2px solid black;
 }
 
@@ -92,13 +93,9 @@ body {
 }
 
 #task-list > li {
-  margin: 1em 0;
+  margin-top: 1em;
   background-color: var(--colorWhite);
-  border: 1px solid black;
   border-radius: 6px;
-  box-sizing: border-box;
-  position: relative;
-  padding: 12px 0px 12px 40px;
   list-style-type: none;
   background: #eee;
   font-size: 18px;
@@ -167,11 +164,6 @@ body {
   background-repeat: no-repeat;
   background-size: 80%;
   cursor: pointer;
-}
-
-#task-list > li > span img {
-  width: 16px;
-  height: auto;
 }
 
 #task:focus {
