@@ -74,22 +74,15 @@ class TodoListElement {
     textSpan.appendChild(document.createTextNode(this._title));
     htmlElement.appendChild(textSpan);
     htmlElement.id = this._id;
+ 
 
-
-
-
-    // 111111111111111111
     //add done event listener to li element
     htmlElement.addEventListener("click", (ev) => {
        if ( ev.target === htmlElement || (ev.target === textSpan && ev.target.isContentEditable === false) ) {
-        htmlElement.classList.toggle("checked");
-        console.log('should toggle checked Class now');
+        htmlElement.classList.toggle("checked"); 
        }
     });
-     // 111111111111111111111 
-
-
-
+  
 
     //TODO rest
     return htmlElement;
