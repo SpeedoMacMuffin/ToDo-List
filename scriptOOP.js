@@ -21,12 +21,14 @@ class ToDoList {
   }
 
   addElement(title) {
-    this._list.push(new TodoListElement(title));
+    this._list.push(new TodoListElement(title, this.deleteElement));
     this.renderElements();
   }
   deleteElement(id) {
-    //delete element from List
-    //delete element from DOM
+    // console.log(id);
+    const index = this.indexOfElement(id); //find index from List 
+    this._list.splice(index, 1); //delete element from List
+
     this.renderElements();
   }
   editElement(id) {
@@ -46,9 +48,10 @@ class ToDoList {
 }
 
 class TodoListElement {
-  constructor(title) {
+  constructor(title, deleteHandler) {
     this._id = "li-" + idCounter++;
     this._title = title;
+    this._deleteHandler = deleteHandler;
   }
 
   getId() {
@@ -58,7 +61,6 @@ class TodoListElement {
   render() {
     const htmlElement = document.createElement("LI");
 
-    //TODO add id
 
     //create text span node
     const textSpan = document.createElement("SPAN");
@@ -66,6 +68,23 @@ class TodoListElement {
     textSpan.appendChild(document.createTextNode(this._title));
     htmlElement.appendChild(textSpan);
     htmlElement.id = this._id;
+
+//create delete button
+const deleteSpan = document.createElement("SPAN");  //<span></span>
+deleteSpan.className = "delete";  //<span class ="delete"></span>
+//generate delete button event listener
+deleteSpan.addEventListener("click", () => {
+  this._deleteHandler(this._id);
+});
+
+//add delete button to element
+htmlElement.appendChild(deleteSpan);
+
+
+
+
+
+
 
     //add done event listener to li element
     htmlElement.addEventListener("click", (ev) => {
@@ -85,7 +104,7 @@ class TodoListElement {
 const todoList = new ToDoList();
 todoList.renderElements();
 todoList.addElement("title10");
-
+// todoList.deleteElement("li-1");
 /* Add Button functionality */
 const addBttn = document.getElementById("add");
 
@@ -99,6 +118,8 @@ addBttn.addEventListener("click", (e) => {
     alert("Please enter a task");
   }
 });
+
+
 
 //  console.log(todoList.indexOfElement('li-1'));
 
