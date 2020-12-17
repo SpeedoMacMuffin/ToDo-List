@@ -29,11 +29,13 @@ class ToDoList {
     //delete element from DOM
     this.renderElements();
   }
-  editElement(id) {
-    //do something
-    this.renderElements();
+  editElement(id, newTitle) {
+    const element = this._list[this.indexOfElement(id)];
+    if (element.getTitle() !== newTitle) {
+      element.setTitle(newTitle);
+      this.renderElements();
+    }
   }
-
   renderElements() {
     const toDoList = document.getElementById("task-list");
     //delete all childs
@@ -51,6 +53,12 @@ class TodoListElement {
     this._title = title;
   }
 
+  getTitle() {
+    return this._title;
+  }
+  setTitle(title) {
+    this._title = title;
+  }
   getId() {
     return this._id;
   }
