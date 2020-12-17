@@ -37,6 +37,7 @@ body {
   text-transform: capitalize;
   color: var(--colorWhite);
   font-size: 2em;
+  line-height: 1.6em;
   font-family: var(--font_Rubik);
 }
 
@@ -166,11 +167,10 @@ body {
 }
  
 .edit.saveActive {
-  background-image: none;
-  transform: none;
+  background-color: var(--colorGreen);
 }
   
-.edit.saveActive::before {
+/*.edit.saveActive::before {
   content: "- save -";
   background-color: var(--colorGreen);
   position: absolute;
@@ -182,7 +182,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-}
+}*/
 
 
 
