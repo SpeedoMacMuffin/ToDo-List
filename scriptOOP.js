@@ -100,11 +100,11 @@ const addBttn = document.getElementById("add");
 addBttn.addEventListener("click", (e) => {
   let name = document.querySelector("#task").value;
   e.preventDefault();
-  if (name) {
+  if (name.replace(/\s/g, "") == "") {
+    alert("Please enter a task");
+  } else {
     todoList.addElement(name);
     document.querySelector("#task").value = "";
-  } else {
-    alert("Please enter a task");
   }
 });
 
