@@ -38,6 +38,7 @@ Mockup: ![Mockup](https://raw.githubusercontent.com/klarmann1/ToDo-List/dev/img/
 - marking tasks as done/checked
 - deleting tasks
 - drag & drop tasks
+- input field only accepts characters. no empty spaces
 
 ## Bonus-Functionalities(in development):
 

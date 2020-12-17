@@ -21,11 +21,11 @@ class ToDoList {
   }
 
   addElement(title) {
-    this._list.push(new TodoListElement(title, this.deleteElement));
+    this._list.push(new TodoListElement(title,  (id) => {this.deleteElement(id)}));
     this.renderElements();
   }
   deleteElement(id) {
-    // console.log(id);
+    // console.log(this);
     const index = this.indexOfElement(id); //find index from List 
     this._list.splice(index, 1); //delete element from List
 
@@ -119,11 +119,11 @@ const addBttn = document.getElementById("add");
 addBttn.addEventListener("click", (e) => {
   let name = document.querySelector("#task").value;
   e.preventDefault();
-  if (name) {
+  if (name.replace(/\s/g, "") == "") {
+    alert("Please enter a task");
+  } else {
     todoList.addElement(name);
     document.querySelector("#task").value = "";
-  } else {
-    alert("Please enter a task");
   }
 });
 
