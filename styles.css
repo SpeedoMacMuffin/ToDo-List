@@ -36,7 +36,7 @@ body {
 .main h1 {
   text-transform: capitalize;
   color: var(--colorWhite);
-  font-size: 1.4em;
+  font-size: 2em;
   font-family: var(--font_Rubik);
 }
 
@@ -60,24 +60,51 @@ body {
 }
 
 .main p {
-  font-size: 0.6em;
+  font-size: 0.9em;
   color: var(--colorPaleRed);
-  margin: 2.5em 0 0.25em 0;
+  margin: 2em 0 0 0;
 }
 
 .inputArea {
-  position: relative;
-}
-
-#task {
-  width: 100%;
-  background-color: var(--colorGreen);
-  height: 3.75em;
-  border: unset;
+  height:3em;
+  margin-top: 1em;
   border-radius: 6px;
-  padding: 0 2em;
-  color: #633232;
-  border-bottom: 2px solid black;
+  list-style-type: none;
+  background-color: var(--colorGreen);
+  font-size: 18px;
+  transition: 0.2s;
+  display: flex;
+  align-items: center;
+}
+.inputArea input {
+  flex-grow: 1;
+  font-size: inherit;
+  font-family: inherit;
+  border: unset;
+  background: unset;
+  margin: 0 1em;
+}
+.inputArea input:focus {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+.inputArea input:focus::placeholder {
+  color: transparent;
+}
+.inputArea button {
+  font-size: inherit;
+  font-family: inherit;
+  align-self: stretch;
+  border: unset;
+  background: unset;
+  border-radius: 0 6px 6px 0;
+  border-left: solid 1px var(--colorRed);
+  padding: 0.6em 1.5em;
+  font-weight: 700;
+  cursor: pointer;
+}
+.inputArea button:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+  transition: all 0.25s;
 }
 
 .shadow,
@@ -92,12 +119,12 @@ body {
   padding: 0;
 }
 
-#task-list > li {
+#task-list > li  {
+  height:3em;
   margin-top: 1em;
   background-color: var(--colorWhite);
   border-radius: 6px;
   list-style-type: none;
-  background: #eee;
   font-size: 18px;
   transition: 0.2s;
   display: flex;
@@ -120,7 +147,6 @@ body {
 .edit, .delete {
   display: block;
   width: 2.5em;
-  height:3em;
   background-size: 1em;
   background-position: center;
   background-repeat: no-repeat;
@@ -136,7 +162,7 @@ body {
   border-radius: 0 6px 6px 0;
 }
 .delete:hover, .edit:hover {
-  background-color: lightgray;
+  background-color: rgba(0, 0, 0, 0.1);
 }
  
 .edit.saveActive {
@@ -174,33 +200,6 @@ body {
 
 #task-list > li.checked > .edit {
   display: none;
-}
-
-#task:focus {
-  text-decoration: underline;
-  text-decoration-thickness: 2px;
-  box-shadow: rgba(0, 0, 0, 0.5) 0px 14px 28px, rgba(0, 0, 0, 0.5) 0px 5px 5px;
-  transition: all 0.25s;
-}
-#task:hover {
-  box-shadow: rgba(0, 0, 0, 0.5) 0px 14px 28px, rgba(0, 0, 0, 0.5) 0px 5px 5px;
-  transition: all 0.25s;
-}
-.main button {
-  position: absolute;
-  left: unset;
-  top: 0.6em;
-  right: 1.5em;
-  background-color: var(--colorWhite);
-  border: 1px solid black;
-  border-radius: 3px;
-  padding: 0.6em 1.5em;
-  font-weight: 700;
-  cursor: pointer;
-}
-.main button:hover {
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 5px 5px;
-  transition: all 0.25s;
 }
 
 /* contenteditable   */
