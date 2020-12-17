@@ -49,8 +49,15 @@ class TodoListElement {
     this._id = "li-" + idCounter++;
     this._title = title;
     this._deleteHandler = deleteHandler;
+    this._checked = false;
+    this._isInEditMode = false;
   }
-
+  isChecked() {
+    return this._checked;
+  }
+  setChecked(checked) {
+    this._checked = checked;
+  }
   getTitle() {
     return this._title;
   }
@@ -71,16 +78,26 @@ class TodoListElement {
     textSpan.appendChild(document.createTextNode(this._title));
     htmlElement.appendChild(textSpan);
 
-    //create delete button
-    const deleteSpan = document.createElement("SPAN");  //<span></span>
-    deleteSpan.className = "delete";  //<span class ="delete"></span>
-    //generate delete button event listener
-    deleteSpan.addEventListener("click", () => {
-      this._deleteHandler(this._id);
-    });
+    if(this._isInEditMode) {
+
+    } else {
+      //create delete button
+      const deleteSpan = document.createElement("SPAN"); //<span></span>
+      deleteSpan.className = "delete"; //<span class ="delete"></span>
+      //generate delete button event listener
+      deleteSpan.addEventListener("click", () => {
+        this._deleteHandler(this._id);
+      });
 
     //add delete button to element
     htmlElement.appendChild(deleteSpan);
+
+    }
+    
+
+    if  (this._checked) {
+      htmlElement.classList.add("checked");
+    }
 
     //add done event listener to li element
     htmlElement.addEventListener("click", (ev) => {
@@ -89,6 +106,7 @@ class TodoListElement {
         (ev.target === textSpan && ev.target.isContentEditable === false)
       ) {
         htmlElement.classList.toggle("checked");
+        this._checked = !this._checked;
       }
     });
 
