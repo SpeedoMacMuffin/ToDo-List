@@ -197,11 +197,11 @@ class TodoListElement {
 }
 
 const todoList = new ToDoList();
-todoList.addElement("1Talk about our lord and savior Jesus Christ");
-todoList.addElement("2Deactivate addblocker");
-todoList.addElement("3Accept all cookies");
-todoList.addElement("4Take part in a survey");
-todoList.addElement("5Skip morning coffee");
+todoList.addElement("Talk about our lord and savior Jesus Christ");
+todoList.addElement("Deactivate addblocker");
+todoList.addElement("Accept all cookies");
+todoList.addElement("Take part in a survey");
+todoList.addElement("Skip morning coffee");
 
 //add button-listener
 const addBttn = document.getElementById("add");
