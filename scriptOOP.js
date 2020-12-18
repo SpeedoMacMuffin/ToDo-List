@@ -1,6 +1,13 @@
 "use strict";
 
 let idCounter = 0;
+window.addEventListener(
+  "drop",
+  (e) => {
+    e.preventDefault();
+  },
+  false
+);
 class ToDoList {
   constructor() {
     this._list = [];
@@ -16,7 +23,14 @@ class ToDoList {
   }
 
   addElement(title) {
-    this._list.push(new TodoListElement(title,  (id) => this.deleteElement(id), (id, newTitle) => this.editElement(id, newTitle)));
+    this._list.push(
+      new TodoListElement(
+        title,
+        (id) => this.deleteElement(id),
+        (id, newTitle) => this.editElement(id, newTitle),
+        (dragId, dropId) => this.moveElement(dragId, dropId)
+      )
+    );
     this.renderElements();
   }
   deleteElement(id) {
@@ -31,6 +45,14 @@ class ToDoList {
     element.setTitle(newTitle);
     this.renderElements();
   }
+  moveElement(dragId, dropId) {
+    const dragIndex = this.indexOfElement(dragId);
+    const dropIndex = this.indexOfElement(dropId);
+    const element = this._list.splice(dragIndex, 1)[0];
+    this._list.splice(dropIndex,0,element);
+    this.renderElements();
+
+  }
   renderElements() {
     const toDoList = document.getElementById("task-list");
     //delete all childs
@@ -43,11 +65,12 @@ class ToDoList {
 }
 
 class TodoListElement {
-  constructor(title, deleteHandler, editHandler) {
+  constructor(title, deleteHandler, editHandler, dropHandler) {
     this._id = "li-" + idCounter++;
     this._title = title;
     this._deleteHandler = deleteHandler;
     this._editHandler = editHandler;
+    this._dropHandler = dropHandler;
     this._checked = false;
     this._isInEditMode = false;
   }
@@ -66,7 +89,31 @@ class TodoListElement {
   getId() {
     return this._id;
   }
+  makeDragable(element) {
+    element.draggable = "true";
+    element.addEventListener("dragstart", (ev) => {
+      ev.dataTransfer.setData("text", element.id);
+      // visualize dragged Element in its remaining position
+      element.style.opacity = ".75";
+    });
+  }
+  makeDropable(element) {
+    //change the cursor on the dropzone and mark it as viable
+    element.addEventListener("dragover", (ev) => {
+      ev.preventDefault();
+      ev.dataTransfer.dropEffect = "move";
+    });
 
+    //add dragged element before this element
+    element.addEventListener("drop", (ev) => {
+      let draggedEl = document.getElementById(ev.dataTransfer.getData("text"));
+      this._dropHandler(draggedEl.id, element.id);
+      // visualize dropped Element in its new position for one second
+      setTimeout(function () {
+        draggedEl.style.opacity = "1";
+      }, 1000);
+    });
+  }
 
   render() {
     const htmlElement = document.createElement("LI");
@@ -91,7 +138,6 @@ class TodoListElement {
         this._editHandler(this._id, inputSpan.value);
       }
     });
-    
 
     //create abort button
     const abortSpan = document.createElement("SPAN");
@@ -106,7 +152,6 @@ class TodoListElement {
       htmlElement.appendChild(editSpan);
       htmlElement.appendChild(deleteSpan);
     });
-    
 
     //create text span node
     const textSpan = document.createElement("SPAN");
@@ -144,16 +189,19 @@ class TodoListElement {
     //add delete button to element
     htmlElement.appendChild(deleteSpan);
 
+    this.makeDragable(htmlElement);
+    this.makeDropable(htmlElement);
+
     return htmlElement;
   }
 }
 
 const todoList = new ToDoList();
-todoList.addElement("Talk about our lord and savior Jesus Christ");
-todoList.addElement("Deactivate addblocker");
-todoList.addElement("Accept all cookies");
-todoList.addElement("Take part in a survey");
-todoList.addElement("Skip morning coffee");
+todoList.addElement("1Talk about our lord and savior Jesus Christ");
+todoList.addElement("2Deactivate addblocker");
+todoList.addElement("3Accept all cookies");
+todoList.addElement("4Take part in a survey");
+todoList.addElement("5Skip morning coffee");
 
 //add button-listener
 const addBttn = document.getElementById("add");
