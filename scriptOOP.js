@@ -28,10 +28,8 @@ class ToDoList {
   }
   editElement(id, newTitle) {
     const element = this._list[this.indexOfElement(id)];
-    if (element.getTitle() !== newTitle) {
-      element.setTitle(newTitle);
-      this.renderElements();
-    }
+    element.setTitle(newTitle);
+    this.renderElements();
   }
   renderElements() {
     const toDoList = document.getElementById("task-list");
@@ -87,8 +85,11 @@ class TodoListElement {
     const confirmSpan = document.createElement("SPAN");
     confirmSpan.className = "bttn confirm";
     confirmSpan.addEventListener("click", () => {
-      console.log(inputSpan.value);
-      this._editHandler(this._id, inputSpan.value);
+      if (inputSpan.value === "") {
+        alert("task can't be empty");
+      } else {
+        this._editHandler(this._id, inputSpan.value);
+      }
     });
     
 
