@@ -96,6 +96,9 @@ class TodoListElement {
       // visualize dragged Element in its remaining position
       element.style.opacity = ".75";
     });
+    element.addEventListener("dragend", (ev) => {
+      element.style.opacity = "1";
+    });
   }
   makeDropable(element) {
     //change the cursor on the dropzone and mark it as viable
@@ -109,9 +112,6 @@ class TodoListElement {
       let draggedEl = document.getElementById(ev.dataTransfer.getData("text"));
       this._dropHandler(draggedEl.id, element.id);
       // visualize dropped Element in its new position for one second
-      setTimeout(function () {
-        draggedEl.style.opacity = "1";
-      }, 1000);
     });
   }
 
