@@ -16,7 +16,7 @@ class ToDoList {
   }
 
   addElement(title) {
-    this._list.push(new TodoListElement(title,  (id) => {this.deleteElement(id)}));
+    this._list.push(new TodoListElement(title,  (id) => this.deleteElement(id), (id, newTitle) => this.editElement(id, newTitle)));
     this.renderElements();
   }
   deleteElement(id) {
@@ -69,9 +69,14 @@ class TodoListElement {
     return this._id;
   }
 
+
   render() {
     const htmlElement = document.createElement("LI");
     htmlElement.id = this._id;
+
+    if (this._checked) {
+      htmlElement.classList.add("checked");
+    }
 
     //create input span node
     const inputSpan = document.createElement("INPUT");
@@ -82,19 +87,35 @@ class TodoListElement {
     const confirmSpan = document.createElement("SPAN");
     confirmSpan.className = "bttn confirm";
     confirmSpan.addEventListener("click", () => {
-      this._editHandler(this._id);
+      console.log(inputSpan.value);
+      this._editHandler(this._id, inputSpan.value);
     });
     
 
     //create abort button
     const abortSpan = document.createElement("SPAN");
     abortSpan.className = "bttn abort";
+    // on CLick switch normal controls with edit controls
+    confirmSpan.addEventListener("click", () => {
+      inputSpan.remove();
+      confirmSpan.remove();
+      abortSpan.remove();
+
+      htmlElement.appendChild(textSpan);
+      htmlElement.appendChild(editSpan);
+      htmlElement.appendChild(deleteSpan);
+    });
     
 
     //create text span node
     const textSpan = document.createElement("SPAN");
     textSpan.className = "text";
     textSpan.appendChild(document.createTextNode(this._title));
+    //add checked event listener to li element
+    textSpan.addEventListener("click", (ev) => {
+      htmlElement.classList.toggle("checked");
+      this._checked = !this._checked;
+    });
     htmlElement.appendChild(textSpan);
 
     //create edit button
@@ -107,6 +128,7 @@ class TodoListElement {
       deleteSpan.remove();
 
       htmlElement.appendChild(inputSpan);
+      inputSpan.focus();
       htmlElement.appendChild(confirmSpan);
       htmlElement.appendChild(abortSpan);
     });
@@ -118,25 +140,8 @@ class TodoListElement {
     deleteSpan.addEventListener("click", () => {
       this._deleteHandler(this._id);
     });
-
     //add delete button to element
     htmlElement.appendChild(deleteSpan);
-
-    if (this._checked) {
-      htmlElement.classList.add("checked");
-    }
-
-    //add done event listener to li element
-    htmlElement.addEventListener("click", (ev) => {
-      if (
-        ev.target === htmlElement ||
-        (ev.target.className === "text" &&
-          ev.target.isContentEditable === false)
-      ) {
-        htmlElement.classList.toggle("checked");
-        this._checked = !this._checked;
-      }
-    });
 
     return htmlElement;
   }
