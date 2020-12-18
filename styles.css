@@ -164,11 +164,9 @@ input.text {
 }
 .confirm {
   background-image: url(./img/check-solid.svg);
-  background-color: var(--colorGreen);
 }
 .abort {
   background-image: url(./img/times-solid.svg);
-  background-color: var(--colorRed);
   background-size: 0.9em;
   border-radius: 0 6px 6px 0;
 }
@@ -180,7 +178,7 @@ input.text {
   border-radius: 0 6px 6px 0;
   background-size: 0.9em;
 }
-.delete:hover, .edit:hover {
+.bttn:hover {
   background-color: rgba(0, 0, 0, 0.1);
 }
  
