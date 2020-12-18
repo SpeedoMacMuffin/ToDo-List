@@ -37,14 +37,16 @@ Mockup: ![Mockup](https://raw.githubusercontent.com/klarmann1/ToDo-List/dev/img/
 - adding a new task
 - marking tasks as done/checked
 - deleting tasks
+- drag & drop tasks
+- input field only accepts characters. no empty spaces
+- edit-function, accept/decline edits
 
 ## Bonus-Functionalities(in development):
 
-- editing existing task
 - dark-mode toggle
 
 ---
 
-## Libaries and Images 
+## Libaries and Images
 
-- the following two Icons are comming from font-awesome.com: the Close-Icon and the Edit-Icon  
+- the following two Icons are comming from font-awesome.com: the Close-Icon and the Edit-Icon
