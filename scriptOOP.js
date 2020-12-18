@@ -85,7 +85,7 @@ class TodoListElement {
     const confirmSpan = document.createElement("SPAN");
     confirmSpan.className = "bttn confirm";
     confirmSpan.addEventListener("click", () => {
-      if (inputSpan.value === "") {
+      if (inputSpan.value.replace(/\s/g, "") == "") {
         alert("task can't be empty");
       } else {
         this._editHandler(this._id, inputSpan.value);
