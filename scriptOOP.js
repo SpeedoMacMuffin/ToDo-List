@@ -57,7 +57,7 @@ class ToDoList {
     const toDoList = document.getElementById("task-list");
     //delete all childs
     toDoList.innerHTML = "";
-
+    //render every individual element
     for (let i = 0; i < this._list.length; i++) {
       toDoList.prepend(this._list[i].render());
     }
@@ -74,6 +74,10 @@ class TodoListElement {
     this._checked = false;
     this._isInEditMode = false;
   }
+
+  // -----------------------------------------------
+  // getters/setters
+
   isChecked() {
     return this._checked;
   }
@@ -89,11 +93,14 @@ class TodoListElement {
   getId() {
     return this._id;
   }
+
+  // -----------------------------------------------
+  // drag and drop functionality
+
   makeDragable(element) {
     element.draggable = "true";
     element.addEventListener("dragstart", (ev) => {
       ev.dataTransfer.setData("text", element.id);
-      // visualize dragged Element in its remaining position
       element.style.opacity = ".75";
     });
     element.addEventListener("dragend", (ev) => {
@@ -101,19 +108,18 @@ class TodoListElement {
     });
   }
   makeDropable(element) {
-    //change the cursor on the dropzone and mark it as viable
     element.addEventListener("dragover", (ev) => {
       ev.preventDefault();
       ev.dataTransfer.dropEffect = "move";
     });
-
-    //add dragged element before this element
     element.addEventListener("drop", (ev) => {
       let draggedEl = document.getElementById(ev.dataTransfer.getData("text"));
       this._dropHandler(draggedEl.id, element.id);
-      // visualize dropped Element in its new position for one second
     });
   }
+
+  // -----------------------------------------------
+  // element rendering
 
   render() {
     const htmlElement = document.createElement("LI");
@@ -195,6 +201,9 @@ class TodoListElement {
     return htmlElement;
   }
 }
+
+// -----------------------------------------------
+// element rendering
 
 const todoList = new ToDoList();
 todoList.addElement("Talk about our lord and savior Jesus Christ");
