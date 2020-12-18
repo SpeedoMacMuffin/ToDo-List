@@ -96,7 +96,7 @@ class TodoListElement {
     const abortSpan = document.createElement("SPAN");
     abortSpan.className = "bttn abort";
     // on CLick switch normal controls with edit controls
-    confirmSpan.addEventListener("click", () => {
+    abortSpan.addEventListener("click", () => {
       inputSpan.remove();
       confirmSpan.remove();
       abortSpan.remove();
