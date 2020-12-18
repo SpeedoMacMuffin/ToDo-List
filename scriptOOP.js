@@ -1,6 +1,13 @@
 "use strict";
 
 let idCounter = 0;
+window.addEventListener(
+  "drop",
+  (e) => {
+    e.preventDefault();
+  },
+  false
+);
 class ToDoList {
   constructor() {
     this._list = [];
@@ -16,7 +23,14 @@ class ToDoList {
   }
 
   addElement(title) {
-    this._list.push(new TodoListElement(title,  (id) => this.deleteElement(id), (id, newTitle) => this.editElement(id, newTitle)));
+    this._list.push(
+      new TodoListElement(
+        title,
+        (id) => this.deleteElement(id),
+        (id, newTitle) => this.editElement(id, newTitle),
+        (dragId, dropId) => this.moveElement(dragId, dropId)
+      )
+    );
     this.renderElements();
   }
   deleteElement(id) {
@@ -31,11 +45,19 @@ class ToDoList {
     element.setTitle(newTitle);
     this.renderElements();
   }
+  moveElement(dragId, dropId) {
+    const dragIndex = this.indexOfElement(dragId);
+    const dropIndex = this.indexOfElement(dropId);
+    const element = this._list.splice(dragIndex, 1)[0];
+    this._list.splice(dropIndex,0,element);
+    this.renderElements();
+
+  }
   renderElements() {
     const toDoList = document.getElementById("task-list");
     //delete all childs
     toDoList.innerHTML = "";
-
+    //render every individual element
     for (let i = 0; i < this._list.length; i++) {
       toDoList.prepend(this._list[i].render());
     }
@@ -43,14 +65,19 @@ class ToDoList {
 }
 
 class TodoListElement {
-  constructor(title, deleteHandler, editHandler) {
+  constructor(title, deleteHandler, editHandler, dropHandler) {
     this._id = "li-" + idCounter++;
     this._title = title;
     this._deleteHandler = deleteHandler;
     this._editHandler = editHandler;
+    this._dropHandler = dropHandler;
     this._checked = false;
     this._isInEditMode = false;
   }
+
+  // -----------------------------------------------
+  // getters/setters
+
   isChecked() {
     return this._checked;
   }
@@ -67,6 +94,32 @@ class TodoListElement {
     return this._id;
   }
 
+  // -----------------------------------------------
+  // drag and drop functionality
+
+  makeDragable(element) {
+    element.draggable = "true";
+    element.addEventListener("dragstart", (ev) => {
+      ev.dataTransfer.setData("text", element.id);
+      element.style.opacity = ".75";
+    });
+    element.addEventListener("dragend", (ev) => {
+      element.style.opacity = "1";
+    });
+  }
+  makeDropable(element) {
+    element.addEventListener("dragover", (ev) => {
+      ev.preventDefault();
+      ev.dataTransfer.dropEffect = "move";
+    });
+    element.addEventListener("drop", (ev) => {
+      let draggedEl = document.getElementById(ev.dataTransfer.getData("text"));
+      this._dropHandler(draggedEl.id, element.id);
+    });
+  }
+
+  // -----------------------------------------------
+  // element rendering
 
   render() {
     const htmlElement = document.createElement("LI");
@@ -103,7 +156,6 @@ class TodoListElement {
         this._editHandler(this._id, inputSpan.value);
       }
     });
-    
 
     //create abort button
     const abortSpan = document.createElement("SPAN");
@@ -118,7 +170,6 @@ class TodoListElement {
       htmlElement.appendChild(editSpan);
       htmlElement.appendChild(deleteSpan);
     });
-    
 
     //create text span node
     const textSpan = document.createElement("SPAN");
@@ -156,9 +207,15 @@ class TodoListElement {
     //add delete button to element
     htmlElement.appendChild(deleteSpan);
 
+    this.makeDragable(htmlElement);
+    this.makeDropable(htmlElement);
+
     return htmlElement;
   }
 }
+
+// -----------------------------------------------
+// element rendering
 
 const todoList = new ToDoList();
 todoList.addElement("Talk about our lord and savior Jesus Christ");
