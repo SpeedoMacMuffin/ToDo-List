@@ -81,6 +81,18 @@ class TodoListElement {
     inputSpan.className = "text";
     inputSpan.value = this._title;
 
+
+
+  // addEvent-Listener to find out if the return-Key is beeing used on a editable list-Element 
+  inputSpan.addEventListener("keydown", (keyInfo) => {
+    // console.log('keyInfo: ' + keyInfo);
+    // stop editing if the Enter-Key is pressed
+    if (keyInfo.keyCode == 13) {
+      // console.log('the Return-Key on the Keyboard has the keydown-Number: 13!'); 
+      this._editHandler(this._id, inputSpan.value); 
+    }
+  });
+  
     //create confirm button
     const confirmSpan = document.createElement("SPAN");
     confirmSpan.className = "bttn confirm";
