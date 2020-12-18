@@ -45,10 +45,11 @@ class ToDoList {
 }
 
 class TodoListElement {
-  constructor(title, deleteHandler) {
+  constructor(title, deleteHandler, editHandler) {
     this._id = "li-" + idCounter++;
     this._title = title;
     this._deleteHandler = deleteHandler;
+    this._editHandler = editHandler;
     this._checked = false;
     this._isInEditMode = false;
   }
@@ -72,30 +73,56 @@ class TodoListElement {
     const htmlElement = document.createElement("LI");
     htmlElement.id = this._id;
 
+    //create input span node
+    const inputSpan = document.createElement("INPUT");
+    inputSpan.className = "text";
+    inputSpan.value = this._title;
+
+    //create confirm button
+    const confirmSpan = document.createElement("SPAN");
+    confirmSpan.className = "bttn confirm";
+    confirmSpan.addEventListener("click", () => {
+      this._editHandler(this._id);
+    });
+    
+
+    //create abort button
+    const abortSpan = document.createElement("SPAN");
+    abortSpan.className = "bttn abort";
+    
+
     //create text span node
     const textSpan = document.createElement("SPAN");
     textSpan.className = "text";
     textSpan.appendChild(document.createTextNode(this._title));
     htmlElement.appendChild(textSpan);
 
-    if(this._isInEditMode) {
+    //create edit button
+    const editSpan = document.createElement("SPAN");
+    editSpan.className = "bttn edit";
+    htmlElement.appendChild(editSpan);
+    editSpan.addEventListener("click", () => {
+      textSpan.remove();
+      editSpan.remove();
+      deleteSpan.remove();
 
-    } else {
-      //create delete button
-      const deleteSpan = document.createElement("SPAN"); //<span></span>
-      deleteSpan.className = "delete"; //<span class ="delete"></span>
-      //generate delete button event listener
-      deleteSpan.addEventListener("click", () => {
-        this._deleteHandler(this._id);
-      });
+      htmlElement.appendChild(inputSpan);
+      htmlElement.appendChild(confirmSpan);
+      htmlElement.appendChild(abortSpan);
+    });
+
+    //create delete button
+    const deleteSpan = document.createElement("SPAN"); //<span></span>
+    deleteSpan.className = "bttn delete"; //<span class ="delete"></span>
+    //generate delete button event listener
+    deleteSpan.addEventListener("click", () => {
+      this._deleteHandler(this._id);
+    });
 
     //add delete button to element
     htmlElement.appendChild(deleteSpan);
 
-    }
-    
-
-    if  (this._checked) {
+    if (this._checked) {
       htmlElement.classList.add("checked");
     }
 
@@ -103,7 +130,8 @@ class TodoListElement {
     htmlElement.addEventListener("click", (ev) => {
       if (
         ev.target === htmlElement ||
-        (ev.target === textSpan && ev.target.isContentEditable === false)
+        (ev.target.className === "text" &&
+          ev.target.isContentEditable === false)
       ) {
         htmlElement.classList.toggle("checked");
         this._checked = !this._checked;

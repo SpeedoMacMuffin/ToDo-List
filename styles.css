@@ -144,8 +144,7 @@ body {
   display: flex;
   align-items: center;
 }
-
-.edit, .delete {
+.bttn {
   display: block;
   width: 2.5em;
   background-size: 1em;
@@ -153,14 +152,19 @@ body {
   background-repeat: no-repeat;
   cursor: pointer;
 }
-
+.confirm {
+  background-image: url(./img/check-solid.svg);
+}
+.abort {
+  background-image: url(./img/times-solid.svg);
+}
 .edit {
   background-image: url(./img/pen-solid.svg);
-  position: relative;
 }
 .delete {
-  background-image: url(./img/times-solid.svg);
+  background-image: url(./img/trash-solid.svg);
   border-radius: 0 6px 6px 0;
+  background-size: 0.9em;
 }
 .delete:hover, .edit:hover {
   background-color: rgba(0, 0, 0, 0.1);
